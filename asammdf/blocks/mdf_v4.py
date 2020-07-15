@@ -9466,6 +9466,12 @@ class MDF4(object):
                     bus_t = msg_ids.timestamps[idx_]
                     bus_data_bytes = data_bytes[idx_]
 
+                    #hotfix solution provided by Zhou Qi
+                    lenIdx = len(idx_)
+                    lenDataBytes = len(data_bytes)
+                    if lenDataBytes < lenIdx:
+                        break
+
                     unique_ids = sorted(unique(bus_msg_ids).astype("<u8"))
 
                     bus_map = self.bus_logging_map["CAN"].setdefault(bus, {})
